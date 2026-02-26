@@ -63,23 +63,22 @@
     opacity: 0.06;
   }
 
-  .circles svg {
-    width: 100%;
-    height: 100%;
+  .circles {
+    object-fit: contain;
   }
 
   .circles.top-right {
     top: -120px;
     right: -120px;
     width: 500px;
-    height: 500px;
+    height: auto;
   }
 
   .circles.bottom-left {
     bottom: -150px;
     left: -150px;
     width: 600px;
-    height: 600px;
+    height: auto;
   }
 
   .circles.center {
@@ -87,7 +86,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 700px;
-    height: 700px;
+    height: auto;
     opacity: 0.04;
   }
 
@@ -255,45 +254,22 @@
   }
 
   /* Concentric circles SVG inline helper */
-  .rings { fill: none; stroke: white; stroke-width: 1; }
 </style>
 </head>
 <body>
 
 <div class="noise"></div>
 
-<!-- Reusable SVG for concentric circles motif -->
-<svg style="display:none">
-  <defs>
-    <g id="concentric-rings">
-      <circle cx="200" cy="200" r="30" class="rings"/>
-      <circle cx="200" cy="200" r="55" class="rings"/>
-      <circle cx="200" cy="200" r="80" class="rings"/>
-      <circle cx="200" cy="200" r="105" class="rings"/>
-      <circle cx="200" cy="200" r="130" class="rings"/>
-      <circle cx="200" cy="200" r="155" class="rings"/>
-      <circle cx="200" cy="200" r="180" class="rings"/>
-    </g>
-  </defs>
-</svg>
-
 <!-- Slide 1: Welcome -->
 <div class="slide active" data-slide="0">
-  <div class="circles center">
-    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
-  </div>
-  <img src="https://cdn.resend.com/brand/resend-wordmark-white.svg" alt="Resend" class="logo">
-  <div class="welcome-title">
-    <span class="insiders-text">Insiders<span class="registered">®</span></span>
-  </div>
+  <img src="assets/concentric-circles.png" alt="" class="circles center" style="width:600px;height:600px;opacity:0.04">
+  <img src="assets/full-wordmark.png" alt="Resend Insiders" style="height:48px; margin-bottom:24px;">
   <p class="subtitle" style="margin-top:40px">Welcome. Thank you for being here.</p>
 </div>
 
 <!-- Slide 2: Free Pro Plan -->
 <div class="slide" data-slide="1">
-  <div class="circles top-right">
-    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
-  </div>
+  <img src="assets/expanded-circles.png" alt="" class="circles top-right">
   <p class="label">Exclusive Perk</p>
   <h2>Your free<br>Transactional Pro plan</h2>
   <p class="subtitle">Use the code below to claim your plan — on us.</p>
@@ -302,9 +278,7 @@
 
 <!-- Slide 3: Swag -->
 <div class="slide" data-slide="2">
-  <div class="circles bottom-left">
-    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
-  </div>
+  <img src="assets/concentric-circles.png" alt="" class="circles bottom-left">
   <p class="label">Coming Soon</p>
   <h2>Something special<br>is on the way</h2>
   <p class="subtitle">Insiders-only swag. Stay tuned.</p>
@@ -312,9 +286,7 @@
 
 <!-- Slide 4: React Paris -->
 <div class="slide" data-slide="3">
-  <div class="circles top-right">
-    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
-  </div>
+  <img src="assets/expanded-circles.png" alt="" class="circles top-right">
   <p class="label">Event</p>
   <h2>React Paris</h2>
   <div class="event-details">
@@ -326,9 +298,7 @@
 
 <!-- Slide 5: DevTools Meetup -->
 <div class="slide" data-slide="4">
-  <div class="circles bottom-left">
-    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
-  </div>
+  <img src="assets/concentric-circles.png" alt="" class="circles bottom-left">
   <p class="label">Meetup</p>
   <h2>DevTools SF Meetup</h2>
   <div class="event-details">
@@ -340,9 +310,7 @@
 
 <!-- Slide 6: Thank You -->
 <div class="slide" data-slide="5">
-  <div class="circles center">
-    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
-  </div>
+  <img src="assets/concentric-circles.png" alt="" class="circles center">
   <img src="https://cdn.resend.com/brand/resend-icon-white.svg" alt="Resend" style="height:40px; margin-bottom:48px; opacity:0.5">
   <h2>Thank you</h2>
   <p class="subtitle">Questions? Ideas? Let's talk.</p>
