@@ -5,15 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resend Insiders</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --black: #000000;
     --white: #FDFDFD;
-    --gray-bg: #16171AEB;
-    --gray-fg: #FDFEFFA6;
+    --gray-fg: rgba(253,254,255,0.65);
     --green-fg: #46FEA5D4;
     --blue-fg: #70B8FF;
     --amber-fg: #FFCA16;
@@ -57,33 +56,78 @@
 
   .slide > * { position: relative; z-index: 1; }
 
+  /* Concentric circles motif — Insiders brand element */
+  .circles {
+    position: absolute;
+    z-index: 0 !important;
+    opacity: 0.06;
+  }
+
+  .circles svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .circles.top-right {
+    top: -120px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+  }
+
+  .circles.bottom-left {
+    bottom: -150px;
+    left: -150px;
+    width: 600px;
+    height: 600px;
+  }
+
+  .circles.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    opacity: 0.04;
+  }
+
   .label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gray-fg);
     margin-bottom: 24px;
   }
 
   h1 {
-    font-size: 72px;
-    font-weight: 600;
+    font-size: 80px;
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: -2.8px;
+    letter-spacing: -3px;
     text-align: center;
-    background: linear-gradient(97deg, #ffffff 30%, rgba(255,255,255,0.50) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--white);
     max-width: 900px;
   }
 
+  h1 .thin {
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  h1 sup {
+    font-size: 24px;
+    font-weight: 400;
+    vertical-align: super;
+    opacity: 0.5;
+    letter-spacing: 0;
+  }
+
   h2 {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 600;
     line-height: 1.15;
-    letter-spacing: -1.8px;
+    letter-spacing: -2px;
     text-align: center;
     background: linear-gradient(97deg, #ffffff 30%, rgba(255,255,255,0.50) 100%);
     -webkit-background-clip: text;
@@ -97,44 +141,29 @@
     line-height: 1.6;
     color: var(--gray-fg);
     text-align: center;
-    max-width: 600px;
+    max-width: 560px;
     margin-top: 24px;
   }
 
   .code-block {
     margin-top: 40px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
-    padding: 24px 48px;
+    padding: 24px 56px;
     font-family: 'Courier New', monospace;
-    font-size: 32px;
-    letter-spacing: 2px;
+    font-size: 36px;
+    letter-spacing: 4px;
     color: var(--green-fg);
     backdrop-filter: blur(25px);
-  }
-
-  .highlight {
-    color: var(--amber-fg);
-    font-weight: 600;
-  }
-
-  .link {
-    color: var(--blue-fg);
-    font-weight: 500;
   }
 
   .event-details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     margin-top: 32px;
-  }
-
-  .event-details span {
-    font-size: 18px;
-    color: var(--gray-fg);
   }
 
   .event-details .date {
@@ -143,16 +172,65 @@
     color: var(--white);
   }
 
-  .logo {
-    height: 32px;
-    margin-bottom: 48px;
+  .event-details .location {
+    font-size: 18px;
+    color: var(--gray-fg);
   }
 
-  .divider {
-    width: 48px;
-    height: 1px;
-    background: rgba(255,255,255,0.1);
-    margin: 32px 0;
+  .logo {
+    height: 28px;
+    margin-bottom: 56px;
+    opacity: 0.8;
+  }
+
+  /* Insiders lockup on title slide */
+  .insiders-lockup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .insiders-lockup .icon-circles {
+    width: 56px;
+    height: 56px;
+    opacity: 0.9;
+  }
+
+  .insiders-lockup .wordmark {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+
+  .welcome-title {
+    font-size: 96px;
+    font-weight: 700;
+    letter-spacing: -4px;
+    line-height: 0.95;
+    text-align: center;
+  }
+
+  .welcome-title .resend {
+    display: block;
+    background: linear-gradient(97deg, #ffffff 30%, rgba(255,255,255,0.50) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .welcome-title .insiders-text {
+    display: block;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .registered {
+    font-size: 20px;
+    font-weight: 400;
+    vertical-align: super;
+    opacity: 0.4;
   }
 
   /* Progress bar */
@@ -166,31 +244,56 @@
     z-index: 10;
   }
 
-  /* Slide number */
   .slide-num {
     position: fixed;
     bottom: 24px;
     right: 32px;
-    font-size: 13px;
-    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    color: rgba(255,255,255,0.15);
     z-index: 10;
     font-variant-numeric: tabular-nums;
   }
+
+  /* Concentric circles SVG inline helper */
+  .rings { fill: none; stroke: white; stroke-width: 1; }
 </style>
 </head>
 <body>
 
 <div class="noise"></div>
 
+<!-- Reusable SVG for concentric circles motif -->
+<svg style="display:none">
+  <defs>
+    <g id="concentric-rings">
+      <circle cx="200" cy="200" r="30" class="rings"/>
+      <circle cx="200" cy="200" r="55" class="rings"/>
+      <circle cx="200" cy="200" r="80" class="rings"/>
+      <circle cx="200" cy="200" r="105" class="rings"/>
+      <circle cx="200" cy="200" r="130" class="rings"/>
+      <circle cx="200" cy="200" r="155" class="rings"/>
+      <circle cx="200" cy="200" r="180" class="rings"/>
+    </g>
+  </defs>
+</svg>
+
 <!-- Slide 1: Welcome -->
 <div class="slide active" data-slide="0">
+  <div class="circles center">
+    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
+  </div>
   <img src="https://cdn.resend.com/brand/resend-wordmark-white.svg" alt="Resend" class="logo">
-  <h1>Welcome to<br>Resend Insiders</h1>
-  <p class="subtitle">Thank you for being here.</p>
+  <div class="welcome-title">
+    <span class="insiders-text">Insiders<span class="registered">®</span></span>
+  </div>
+  <p class="subtitle" style="margin-top:40px">Welcome. Thank you for being here.</p>
 </div>
 
 <!-- Slide 2: Free Pro Plan -->
 <div class="slide" data-slide="1">
+  <div class="circles top-right">
+    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
+  </div>
   <p class="label">Exclusive Perk</p>
   <h2>Your free<br>Transactional Pro plan</h2>
   <p class="subtitle">Use the code below to claim your plan — on us.</p>
@@ -199,6 +302,9 @@
 
 <!-- Slide 3: Swag -->
 <div class="slide" data-slide="2">
+  <div class="circles bottom-left">
+    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
+  </div>
   <p class="label">Coming Soon</p>
   <h2>Something special<br>is on the way</h2>
   <p class="subtitle">Insiders-only swag. Stay tuned.</p>
@@ -206,29 +312,38 @@
 
 <!-- Slide 4: React Paris -->
 <div class="slide" data-slide="3">
+  <div class="circles top-right">
+    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
+  </div>
   <p class="label">Event</p>
   <h2>React Paris</h2>
   <div class="event-details">
     <span class="date">March 21, 2026</span>
-    <span>Paris, France</span>
+    <span class="location">Paris, France</span>
   </div>
   <p class="subtitle" style="margin-top:32px">Want a ticket? Let us know.</p>
 </div>
 
 <!-- Slide 5: DevTools Meetup -->
 <div class="slide" data-slide="4">
+  <div class="circles bottom-left">
+    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
+  </div>
   <p class="label">Meetup</p>
   <h2>DevTools SF Meetup</h2>
   <div class="event-details">
     <span class="date">March 26, 2026</span>
-    <span>YC HQ — San Francisco</span>
+    <span class="location">YC HQ · San Francisco</span>
   </div>
   <p class="subtitle" style="margin-top:32px">RSVP on Luma · Save the date</p>
 </div>
 
 <!-- Slide 6: Thank You -->
 <div class="slide" data-slide="5">
-  <img src="https://cdn.resend.com/brand/resend-icon-white.svg" alt="Resend" style="height:48px; margin-bottom:48px; opacity:0.6">
+  <div class="circles center">
+    <svg viewBox="0 0 400 400"><use href="#concentric-rings"/></svg>
+  </div>
+  <img src="https://cdn.resend.com/brand/resend-icon-white.svg" alt="Resend" style="height:40px; margin-bottom:48px; opacity:0.5">
   <h2>Thank you</h2>
   <p class="subtitle">Questions? Ideas? Let's talk.</p>
 </div>
@@ -254,7 +369,6 @@
     if (e.key === 'f') { document.documentElement.requestFullscreen?.(); }
   });
 
-  // Touch/swipe support
   let touchX = 0;
   document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
   document.addEventListener('touchend', e => {
