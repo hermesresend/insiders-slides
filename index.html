@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resend Insiders</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #000000;
+    --white: #FDFDFD;
+    --gray-bg: #16171AEB;
+    --gray-fg: #FDFEFFA6;
+    --green-fg: #46FEA5D4;
+    --blue-fg: #70B8FF;
+    --amber-fg: #FFCA16;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .noise {
+    position: fixed;
+    inset: 0;
+    background: url('https://resend.com/static/product-pages/noise.png') repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  .label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-fg);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -2.8px;
+    text-align: center;
+    background: linear-gradient(97deg, #ffffff 30%, rgba(255,255,255,0.50) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    max-width: 900px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -1.8px;
+    text-align: center;
+    background: linear-gradient(97deg, #ffffff 30%, rgba(255,255,255,0.50) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    max-width: 800px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--gray-fg);
+    text-align: center;
+    max-width: 600px;
+    margin-top: 24px;
+  }
+
+  .code-block {
+    margin-top: 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px 48px;
+    font-family: 'Courier New', monospace;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--green-fg);
+    backdrop-filter: blur(25px);
+  }
+
+  .highlight {
+    color: var(--amber-fg);
+    font-weight: 600;
+  }
+
+  .link {
+    color: var(--blue-fg);
+    font-weight: 500;
+  }
+
+  .event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .event-details span {
+    font-size: 18px;
+    color: var(--gray-fg);
+  }
+
+  .event-details .date {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .logo {
+    height: 32px;
+    margin-bottom: 48px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 32px 0;
+  }
+
+  /* Progress bar */
+  .progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(2,252,239,0.44) 0%, rgba(255,181,43,0.44) 50%, rgba(160,43,254,0.44) 100%);
+    transition: width 0.4s ease;
+    z-index: 10;
+  }
+
+  /* Slide number */
+  .slide-num {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.2);
+    z-index: 10;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<!-- Slide 1: Welcome -->
+<div class="slide active" data-slide="0">
+  <img src="https://cdn.resend.com/brand/resend-wordmark-white.svg" alt="Resend" class="logo">
+  <h1>Welcome to<br>Resend Insiders</h1>
+  <p class="subtitle">Thank you for being here.</p>
+</div>
+
+<!-- Slide 2: Free Pro Plan -->
+<div class="slide" data-slide="1">
+  <p class="label">Exclusive Perk</p>
+  <h2>Your free<br>Transactional Pro plan</h2>
+  <p class="subtitle">Use the code below to claim your plan — on us.</p>
+  <div class="code-block">INSID3R</div>
+</div>
+
+<!-- Slide 3: Swag -->
+<div class="slide" data-slide="2">
+  <p class="label">Coming Soon</p>
+  <h2>Something special<br>is on the way</h2>
+  <p class="subtitle">Insiders-only swag. Stay tuned.</p>
+</div>
+
+<!-- Slide 4: React Paris -->
+<div class="slide" data-slide="3">
+  <p class="label">Event</p>
+  <h2>React Paris</h2>
+  <div class="event-details">
+    <span class="date">March 21, 2026</span>
+    <span>Paris, France</span>
+  </div>
+  <p class="subtitle" style="margin-top:32px">Want a ticket? Let us know.</p>
+</div>
+
+<!-- Slide 5: DevTools Meetup -->
+<div class="slide" data-slide="4">
+  <p class="label">Meetup</p>
+  <h2>DevTools SF Meetup</h2>
+  <div class="event-details">
+    <span class="date">March 26, 2026</span>
+    <span>YC HQ — San Francisco</span>
+  </div>
+  <p class="subtitle" style="margin-top:32px">RSVP on Luma · Save the date</p>
+</div>
+
+<!-- Slide 6: Thank You -->
+<div class="slide" data-slide="5">
+  <img src="https://cdn.resend.com/brand/resend-icon-white.svg" alt="Resend" style="height:48px; margin-bottom:48px; opacity:0.6">
+  <h2>Thank you</h2>
+  <p class="subtitle">Questions? Ideas? Let's talk.</p>
+</div>
+
+<div class="progress" id="progress"></div>
+<div class="slide-num" id="slideNum"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  function show(n) {
+    current = Math.max(0, Math.min(n, total - 1));
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    document.getElementById('progress').style.width = ((current + 1) / total * 100) + '%';
+    document.getElementById('slideNum').textContent = (current + 1) + ' / ' + total;
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+    if (e.key === 'f') { document.documentElement.requestFullscreen?.(); }
+  });
+
+  // Touch/swipe support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+  });
+
+  document.addEventListener('click', e => {
+    if (e.clientX > window.innerWidth / 2) show(current + 1);
+    else show(current - 1);
+  });
+
+  show(0);
+</script>
+</body>
+</html>
